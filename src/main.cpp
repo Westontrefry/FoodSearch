@@ -3,15 +3,17 @@
 //
 #include <iostream>
 #include "Food.h"
+#include "FoodGraph.h" //add header file - ShanonB
 
 int main() {
     /*=== Instantiate Data Structure Objects ===*/
     // Create Table Object
-    // Create Graph Object
+    Graph foodGraph; // Create Graph Object - added ShanonB
 
     /*=== Load Data from FoodData.csv ===*/
     // Read file using Food::readFile function and pushback onto vector
     // Iterate over vector and build both data structures item by item
+    foodGraph.insert_food(food); //insert food data into graph added ShanonB
 
     /*=== Main logic loop ===*/
     // Prompt user for input (search a food item)
@@ -31,7 +33,7 @@ int main() {
         // Display vector items to console
         // Write items to a CSV (in a pair)
 
-
+        
 
 
     return 0;
