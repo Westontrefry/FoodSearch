@@ -3,3 +3,8 @@
 //
 
 #include "Food.h"
+
+// Read File implementation
+std::vector<Food*> readFile(const std::string& fileName) {
+    return {};
+}

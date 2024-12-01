@@ -28,6 +28,12 @@ public:
     // Get number of food objects instantiated
     unsigned int getCount();
 
+    /*=== File Functions (for CSV) ===*/
+    // Read CSV file function, create vector of food objects to store each object read (line by line)
+    std::vector<Food*> readFile(const std::string& fileName);
+
+    /*=== Search Functions ===*/
+    // Keyword function to help with returning list of items containing user input
 
 private:
     /*=== Food Attributes ===*/
@@ -41,13 +47,6 @@ private:
 
     // Count to keep track of the number of food objects instantiated
     unsigned int _count = 0;
-
-    /*=== File Functions (for CSV) ===*/
-    // Read CSV file function, create vector of food objects to store each object read (line by line)
-    std::vector<Food*> readFile(const std::string& fileName);
-
-    /*=== Search Functions ===*/
-    // Keyword function to help with returning list of items containing user input
 
 };
 

@@ -8,31 +8,53 @@
 int main() {
     /*=== Instantiate Data Structure Objects ===*/
     // Create Table Object
+    // HashTable foodTable;
     Graph foodGraph; // Create Graph Object - added ShanonB
 
     /*=== Load Data from FoodData.csv ===*/
+    // Create Food class object
+    Food food;
     // Read file using Food::readFile function and pushback onto vector
+    std::vector<Food*> foods;
+    foods = food.readFile("FoodData.csv");
     // Iterate over vector and build both data structures item by item
-    foodGraph.insert_food(food); //insert food data into graph added ShanonB
+    for (Food* food : foods) {
+        // foodTable.insert(food);
+        foodGraph.insert_food(food); //insert food data into graph added ShanonB
+    }
 
     /*=== Main logic loop ===*/
-    // Prompt user for input (search a food item)
-    // Prompt user to select a filter (menu of nutrient types)
-    // Give user option to exit the program (exit while loop)
+    while (true) {
+        // Prompt user for input (search a food item)
+        std::cout << "Select 1 to search for a food item." << std::endl;
+        std::cout << "Select 2 to exit the program." << std::endl;
+        std::string userInput;
+
+        if (userInput == "2") {
+            break;
+        }
+        if (userInput == "1") {
+            // Prompt user to select a filter (menu of nutrient types)
+            std::cout << "Filter by nutrient: " << std::endl;
+            std::cout << "1. Fiber\n 2. Protein \n 3. Sodium \n "
+                         "4. Sugars \n 5. Saturated Fats \n"
+        }
+
+        // Give user option to exit the program (exit while loop)
 
         /*=== Building Data Structures + Search ===*/
         // Ask user what data structure to build: 1. HashTable, 2. Graph
         // If hash table
-            // Get items using hashtable search function
-            // Push back onto vector
+        // Get items using hashtable search function
+        // Push back onto vector
         // If graph
-            // Get items using graph search function
-            // Push back onto vector
+        // Get items using graph search function
+        // Push back onto vector
 
         /*=== Displaying Search Results ===*/
         // Display vector items to console
         // Write items to a CSV (in a pair)
-
+    }
         
 
 
