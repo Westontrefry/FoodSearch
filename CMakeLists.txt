@@ -7,6 +7,7 @@ add_executable(FoodSearch
         src/Food.cpp
         src/Food.h
         src/main.cpp
+        src/FoodGraph.h
 
 
 )
