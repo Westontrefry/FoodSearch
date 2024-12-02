@@ -4,12 +4,15 @@
 #include <iostream>
 #include "Food.h"
 #include "FoodGraph.h" //add header file - ShanonB
+#include "FoodHashTable.h"
 
 int main() {
     /*=== Instantiate Data Structure Objects ===*/
     // Create Table Object
     // HashTable foodTable;
     Graph foodGraph; // Create Graph Object - added ShanonB
+
+    FoodHashTable foodHashTable(10);
 
     /*=== Load Data from FoodData.csv ===*/
     // Create Food class object
@@ -19,8 +22,9 @@ int main() {
     foods = food.readFile("FoodData.csv");
     // Iterate over vector and build both data structures item by item
     for (Food* food : foods) {
-        // foodTable.insert(food);
         foodGraph.insert_food(food); //insert food data into graph added ShanonB
+
+        foodHashTable.insert(food); // Function takes in description of the food item in csv and then the food item
     }
 
     /*=== Main logic loop ===*/
