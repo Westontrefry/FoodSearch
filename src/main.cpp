@@ -22,7 +22,7 @@ int main() {
     foods = food.readFile("FoodData.csv");
     // Iterate over vector and build both data structures item by item
     for (Food* food : foods) {
-        foodGraph.insert_food(food); //insert food data into graph added ShanonB
+        foodGraph.addFood(food); //insert food data into graph added ShanonB
 
         foodHashTable.insert(food); // Function takes in description of the food item in csv and then the food item
     }
