@@ -73,63 +73,127 @@ int main() {
             if (tableType == 1) {
                 std::cout << "You have chosen the HashTable." << std::endl;
                 std::string foodName;
-                std::cout << "Search by food description:   ";
+                // Vector for storing all matches
                 std::vector<Food> matches;
 
+                // Clear input buffer
+                std::cin.ignore();
+
             switch (filterChoice) {
-                    // Vector for storing all matches
+                    case 1: {
+                        std::cout << "Search by food description:   ";
+                        std::getline(std::cin, foodName);
 
-                    case (1): {
-                    /*=== Exact Match Search: if there is an exact match, O(1) complexity ===*/
-                    auto match = foodHashTable.getFood(foodName);
-                    if (match.has_value()) {
-                        // Key found,
-                        matches.push_back(match.value());
-                        std::cout << "Food item found in Hash Table!" << endl;
-                    }
-                    /*=== Partial Match Search: O(n) due to searching all keys ===*/
-                    else {
-                        // Search all keys (descriptions) to look for partial
-                        // Make user input lower case with tolower() function
-                        std::string lowerCase; // converted string
-                        for (char i : foodName) {
-                            lowerCase += static_cast<char>(tolower(i));
+                        if (foodName.empty()) {
+                            std::cout << "No input..." << std::endl;
+                            break;
                         }
-                        // Iterate through foods vector to look for partial matches
-                        for(Food* food : foods) {
-                            std::string description;
-                            for (char i : food->getDescription()) {
-                                description += static_cast<char>(tolower(i));
-                            }
 
-                            // Search Hash Table, if match found somewhere in description, push onto vector
-                            if (description.find(lowerCase) != std::string::npos) {
-                                // Get the food item from table, then check if it has a value & add to vector
-                                auto hashFood = foodHashTable.getFood(food->getDescription());
-                                // Check that match (key) has value pair and push back to matches vector
-                                if (hashFood) {
-                                    matches.push_back(hashFood.value());
+                        /*=== Exact Match Search: if there is an exact match, O(1) complexity ===*/
+                        auto match = foodHashTable.getFood(foodName);
+                        if (match.has_value()) {
+                            // Key found,
+                            matches.push_back(match.value());
+                            std::cout << "Food item found in Hash Table!" << endl;
+                        }
+                        /*=== Partial Match Search: O(n) due to searching all keys ===*/
+                        else {
+                            // Search all keys (descriptions) to look for partial
+                            // Make user input lower case with tolower() function
+                            std::string lowerCase; // converted string
+                            for (char i : foodName) {
+                                lowerCase += static_cast<char>(tolower(i));
+                            }
+                            // Iterate through foods vector to look for partial matches
+                            for(Food* food : foods) {
+                                std::string description;
+                                for (char i : food->getDescription()) {
+                                    description += static_cast<char>(tolower(i));
+                                }
+
+                                // Search Hash Table, if match found somewhere in description, push onto vector
+                                if (description.find(lowerCase) != std::string::npos) {
+                                    // Get the food item from table, then check if it has a value & add to vector
+                                    auto hashFood = foodHashTable.getFood(food->getDescription());
+                                    // Check that match (key) has value pair and push back to matches vector
+                                    if (hashFood) {
+                                        matches.push_back(hashFood.value());
+                                    }
                                 }
                             }
+                            std::cout << "A total of " << matches.size() << " matches have been found." << endl;
                         }
-                        std::cout << "A total of " << matches.size() << " matches have been found." << endl;
-                    }
-                    if (matches.size() == 1) {
-                        std::cout << "An exact match has been found!" << endl;
+                        if (matches.size() == 1) {
+                            std::cout << "An exact match has been found!" << endl;
                     }
                 }
-                case 2:
-                    // add hash function
-                        continue;
-                case 3:
-                    // add hash function
-                        continue;
-                case 4:
-                    // add hash function
-                        continue;
-                case 5:
-                    // add hash function
-                        continue;
+                    case 2: {
+                        // add hash function
+                        std::cout << "Search foods by entering fiber amount: ";
+                        float fiber;
+                        // Get user input
+                        std::cin >> fiber;
+
+                        // Push back results onto vector
+                        vector<const Food*> results = foodHashTable.searchByFiber(fiber);
+                        break;
+                    }
+                    case 3: {
+                        // add hash function
+                        std::cout << "Search foods by entering fiber amount: ";
+                        float fiber;
+                        // Get user input
+                        std::cin >> fiber;
+
+                        // Push back results onto vector
+                        vector<const Food*> results = foodHashTable.searchByFiber(fiber);
+                        break;
+                    }
+                    case 4: {
+                        // add hash function
+                        std::cout << "Search foods by entering protein amount: ";
+                        float fiber;
+                        // Get user input
+                        std::cin >> fiber;
+
+                        // Push back results onto vector
+                        vector<const Food*> results = foodHashTable.searchByFiber(fiber);
+                        break;
+                    }
+                    case 5: {
+                        // add hash function
+                        std::cout << "Search foods by entering sodium amount: ";
+                        float fiber;
+                        // Get user input
+                        std::cin >> fiber;
+
+                        // Push back results onto vector
+                        vector<const Food*> results = foodHashTable.searchByFiber(fiber);
+                        break;
+                    }
+
+                    case 6: {
+                        std::cout << "Search foods by entering saturated fats amount: ";
+                        float fiber;
+                        // Get user input
+                        std::cin >> fiber;
+
+                        // Push back results onto vector
+                        vector<const Food*> results = foodHashTable.searchByFiber(fiber);
+                        break;
+                    }
+
+                    case 7: {
+                        std::cout << "Search foods by entering energy (KCAL) amount: ";
+                        float fiber;
+                        // Get user input
+                        std::cin >> fiber;
+
+                        // Push back results onto vector
+                        vector<const Food*> results = foodHashTable.searchByFiber(fiber);
+                        break;
+                    }
+
                 }
             }
             else if (tableType == 2)
