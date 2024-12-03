@@ -40,7 +40,7 @@ private:
     void outputCSV(const std::vector<const Food*>& foundFoods) const
     {
 
-        std::ofstream outputFile(".\\CVS_Output\\foods.csv");
+        std::ofstream outputFile("../data/GraphOutputData.csv");
 
         if (!outputFile.is_open())
         {
