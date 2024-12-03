@@ -51,7 +51,7 @@ int main() {
             std::cout << "Search for food name or by food description keyword or filter by nutrient: " << std::endl;
             std::cout << "1. Food Name\n2. Food Description Keyword\n"
                          "3. Fiber\n4. Protein \n5. Sodium \n"
-                         "6. Sugars \n7. Saturated Fats \n8. Exit Program";
+                         "6. Sugars \n7. Saturated Fats \n8. Exit Program\n";
             int filterChoice;
             std::cout << "Enter the nutrient number: ";
             std::cin >> filterChoice;                           //added ShanonB
