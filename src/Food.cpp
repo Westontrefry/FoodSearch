@@ -7,17 +7,6 @@
 #include <fstream>
 #include <sstream>
 
-// Default constructor
-Food::Food() {
-    _description = "";
-    _fiber = 0.0f;
-    _protein = 0.0f;
-    _sodium = 0.0f;
-    _sugars = 0.0f;
-    _satFats = 0.0f;
-    _energy = 0.0f;
-}
-
 // addded ShanonB
 Food::Food(std::string name, float fiber, float protein, float sodium,     
            float sugars, float satFats, float energy)
