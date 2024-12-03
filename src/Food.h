@@ -37,7 +37,7 @@ public:
 
 private:
     /*=== Food Attributes ===*/
-    std::string description;
+    std::string _description;
     float _fiber = 0.0f;
     float _protein = 0.0f;
     float _sodium = 0.0f;
