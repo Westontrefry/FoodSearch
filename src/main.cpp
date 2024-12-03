@@ -10,7 +10,7 @@ int main() {
     /*=== Instantiate Data Structure Objects ===*/
     // Create Table Object
     // HashTable foodTable;
-    Graph foodGraph; // Create Graph Object - added ShanonB
+    FoodGraph foodGraph; // Create Graph Object - added ShanonB
 
     FoodHashTable foodHashTable(10);
 
@@ -24,7 +24,7 @@ int main() {
     for (Food* food : foods) {
         foodGraph.addFood(food); //insert food data into graph added ShanonB
 
-        foodHashTable.insert(food); // Function takes in description of the food item in csv and then the food item
+        foodHashTable.insert(food->getDescription(), *food); // Function takes in description of the food item in csv and then the food item
     }
 
     /*=== Main logic loop ===*/
@@ -41,7 +41,7 @@ int main() {
             // Prompt user to select a filter (menu of nutrient types)
             std::cout << "Filter by nutrient: " << std::endl;
             std::cout << "1. Fiber\n 2. Protein \n 3. Sodium \n "
-                         "4. Sugars \n 5. Saturated Fats \n"
+                         "4. Sugars \n 5. Saturated Fats \n";
         }
 
         // Give user option to exit the program (exit while loop)
