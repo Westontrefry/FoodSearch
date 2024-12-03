@@ -67,12 +67,6 @@ build CMakeFiles/FoodSearch.dir/src/FoodHashTable.cpp.o: CXX_COMPILER__FoodSearc
   OBJECT_DIR = CMakeFiles/FoodSearch.dir
   OBJECT_FILE_DIR = CMakeFiles/FoodSearch.dir/src
 
-build CMakeFiles/FoodSearch.dir/FoodParser.cpp.o: CXX_COMPILER__FoodSearch_unscanned_Debug /Users/westontrefry/Dropbox/Data$ Structures$ &$ Algorithms/FoodSearch/FoodParser.cpp || cmake_object_order_depends_target_FoodSearch
-  DEP_FILE = CMakeFiles/FoodSearch.dir/FoodParser.cpp.o.d
-  FLAGS = -g -std=gnu++17 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk -fcolor-diagnostics
-  OBJECT_DIR = CMakeFiles/FoodSearch.dir
-  OBJECT_FILE_DIR = CMakeFiles/FoodSearch.dir
-
 
 # =============================================================================
 # Link build statements for EXECUTABLE target FoodSearch
@@ -81,7 +75,7 @@ build CMakeFiles/FoodSearch.dir/FoodParser.cpp.o: CXX_COMPILER__FoodSearch_unsca
 #############################################
 # Link the executable FoodSearch
 
-build FoodSearch: CXX_EXECUTABLE_LINKER__FoodSearch_Debug CMakeFiles/FoodSearch.dir/src/Food.cpp.o CMakeFiles/FoodSearch.dir/src/main.cpp.o CMakeFiles/FoodSearch.dir/src/FoodHashTable.cpp.o CMakeFiles/FoodSearch.dir/FoodParser.cpp.o
+build FoodSearch: CXX_EXECUTABLE_LINKER__FoodSearch_Debug CMakeFiles/FoodSearch.dir/src/Food.cpp.o CMakeFiles/FoodSearch.dir/src/main.cpp.o CMakeFiles/FoodSearch.dir/src/FoodHashTable.cpp.o
   FLAGS = -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk
   OBJECT_DIR = CMakeFiles/FoodSearch.dir
   POST_BUILD = :
