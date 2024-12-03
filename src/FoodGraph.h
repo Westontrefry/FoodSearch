@@ -4,6 +4,7 @@
 #include <vector>
 #include <iostream>
 #include <queue>
+#include <sstream>
 #include <fstream>
 #include <algorithm>
 #include <unordered_set>
@@ -37,7 +38,8 @@ private:
 
     void outputCSV(const std::vector<const Food*>& foundFoods) const
     {
-        std::ofstream outputFile("GraphOutputData.csv");
+
+        std::ofstream outputFile(".\\CVS_Output\\foods.csv");
 
         if (!outputFile.is_open())
         {
@@ -75,7 +77,7 @@ private:
     void addEdgeBasedOnAttribute(GraphNode* node1, GraphNode* node2, const std::string& attribute)
     {
         node1->addEdge(node2, attribute);
-        node2->addEdge(node1, attribute); 
+        node2->addEdge(node1, attribute);
     }
 
 public:
