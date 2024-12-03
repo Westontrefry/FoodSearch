@@ -1,4 +1,5 @@
 #include "FoodHashTable.h"
+#include "FoodGraph.h"
 
 FoodHashTable::FoodHashTable(int size) :
     size(size),
@@ -65,5 +66,47 @@ optional<Food> FoodHashTable::getFood(string key) {
     }
 
     return nullopt;
+}
+
+vector<const Food*> FoodHashTable::filter(string filterValue) {
+
+    vector<const Food*> result;
+
+    for (auto& row : table) {
+
+        vector<pair<string, Food>> newRow = row;
+
+        if (filterValue == "fiber") {
+            sort(newRow.begin(), newRow.end(), [](const pair<string, Food>& food1, const pair<string, Food>& food2) {
+                return food1.second.getFiber() < food2.second.getFiber();
+            });
+        }
+        else if (filterValue == "protein") {
+            sort(newRow.begin(), newRow.end(), [](const pair<string, Food>& food1, const pair<string, Food>& food2) {
+                return food1.second.getProtein() < food2.second.getProtein();
+            });
+        }
+        else if (filterValue == "sodium") {
+            sort(newRow.begin(), newRow.end(), [](const pair<string, Food>& food1, const pair<string, Food>& food2) {
+                return food1.second.getSodium() < food2.second.getSodium();
+            });
+        }
+        else if (filterValue == "sugars") {
+            sort(newRow.begin(), newRow.end(), [](const pair<string, Food>& food1, const pair<string, Food>& food2) {
+                return food1.second.getSugars() < food2.second.getSugars();
+            });
+        }
+        else if (filterValue == "fats") {
+            sort(newRow.begin(), newRow.end(), [](const pair<string, Food>& food1, const pair<string, Food>& food2) {
+                return food1.second.getSatFats() < food2.second.getSatFats();
+            });
+        }
+
+        for (const auto& food : newRow) {
+            result.push_back(&food.second);
+        }
+    }
+
+    return result;
 }
 

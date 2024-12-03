@@ -44,8 +44,6 @@ int main() {
                          "4. Sugars \n 5. Saturated Fats \n";
         }
 
-        // Give user option to exit the program (exit while loop)
-
         /*=== Building Data Structures + Search ===*/
         // Ask user what data structure to build: 1. HashTable, 2. Graph
         // If hash table

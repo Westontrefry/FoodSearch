@@ -20,6 +20,7 @@ public:
     void insert(string key, Food food);
     void remove(string key);
     optional<Food> getFood(string key);
+    vector<const Food*> filter(string filterValue);
 };
 
 #endif
