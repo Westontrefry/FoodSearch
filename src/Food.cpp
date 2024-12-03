@@ -7,7 +7,6 @@
 #include <fstream>
 #include <sstream>
 
-
 // addded ShanonB
 Food::Food(std::string name, float fiber, float protein, float sodium,     
            float sugars, float satFats, float energy)
@@ -56,7 +55,14 @@ unsigned int Food::getCount()
 
 /// ***** added ShanonB
 
-
+// Helper function to handle N/A entries in CSV, and float conversion (from string)
+float convertToFloat(const std::string& token) {
+    if (token == "N/A") {
+        return 0.0f;
+    }
+    // All others converted to float with passed in value
+    return stof(token);
+}
 
 // Read File implementation
 std::vector<Food*> Food::readFile(const std::string& fileName) {
@@ -87,17 +93,17 @@ std::vector<Food*> Food::readFile(const std::string& fileName) {
 
         // Convert token to floats for each nutrient amount
         getline(stream, token, ',');
-        _fiber = stof(token);
+        _fiber = convertToFloat(token);
         getline(stream, token, ',');
-        _protein = stof(token);
+        _protein = convertToFloat(token);
         getline(stream, token, ',');
-        _sodium = stof(token);
+        _sodium = convertToFloat(token);
         getline(stream, token, ',');
-        _sugars = stof(token);
+        _sugars = convertToFloat(token);
         getline(stream, token, ',');
-        _satFats = stof(token);
+        _satFats = convertToFloat(token);
         getline(stream, token, ',');
-        _energy = stof(token);
+        _energy = convertToFloat(token);
 
         // Construct food object using the values stored by each token variable
         Food* food = new Food(_description, _fiber, _protein, _sodium, _sugars, _satFats, _energy);
@@ -105,10 +111,6 @@ std::vector<Food*> Food::readFile(const std::string& fileName) {
         foods.push_back(food);
         // Increment count to keep track of number of total food objects stored
         count++;
-
-
     }
-
-
-    return {};
+    return foods;
 }

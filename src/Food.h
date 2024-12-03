@@ -11,7 +11,12 @@ class Food {
 public:
     /*=== Constructors ===*/
     // Default
-    Food();
+    
+    Food()                                                                    //modified default - ShanonB
+        : _description(""), _fiber(0.0f), _protein(0.0f), _sodium(0.0f),
+          _sugars(0.0f), _satFats(0.0f), _energy(0.0f), _count(0) {}
+
+    //Food();
     // Parameterized constructor
     Food(std::string d, float fiber, float protein, float sodium,
         float sugars, float satFats, float energy);
@@ -38,12 +43,12 @@ public:
 private:
     /*=== Food Attributes ===*/
     std::string _description;
-    float _fiber = 0.0f;
-    float _protein = 0.0f;
-    float _sodium = 0.0f;
-    float _sugars = 0.0f;
-    float _satFats = 0.0f;
-    float _energy = 0.0f;
+    float _fiber;
+    float _protein;
+    float _sodium;
+    float _sugars;
+    float _satFats;
+    float _energy;
 
     // Count to keep track of the number of food objects instantiated
     unsigned int _count = 0;
