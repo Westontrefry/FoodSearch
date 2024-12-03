@@ -176,8 +176,6 @@ int main() {
         // Display vector items to console
         // Write items to a CSV (in a pair)
     }
-        
-
 
     return 0;
 }
