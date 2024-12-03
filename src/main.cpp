@@ -79,7 +79,7 @@ int main() {
             switch (filterChoice) {
                     // Vector for storing all matches
 
-                    case (1): {
+                    case 1: {
                     /*=== Exact Match Search: if there is an exact match, O(1) complexity ===*/
                     auto match = foodHashTable.getFood(foodName);
                     if (match.has_value()) {
@@ -118,19 +118,38 @@ int main() {
                         std::cout << "An exact match has been found!" << endl;
                     }
                 }
-                case 2:
-                    // add hash function
-                        continue;
+                case 2: {
+                        // add hash function
+                        std::cout << "Search foods by entering fiber amount: ";
+                        float fiber;
+                        // Get user input
+                        std::cin >> fiber;
+
+                        // Push back results onto vector
+                        vector<const Food*> results = foodHashTable.searchByFiber(fiber);
+                        break;
+                    }
                 case 3:
                     // add hash function
-                        continue;
+                    std::cout << "Search foods by entering fiber amount: ";
+                    break;
                 case 4:
                     // add hash function
-                        continue;
+                    std::cout << "Search foods by entering protein amount: ";
+                    break;
                 case 5:
                     // add hash function
-                        continue;
+                    std::cout << "Search foods by entering sodium amount: ";
+                    break;
+                case 6:
+                    std::cout << "Search foods by entering saturated fats amount: ";
+                    break;
+                case 7:
+                    std::cout << "Search foods by entering energy (KCAL) amount: ";
+                    break;
                 }
+
+
             }
             else if (tableType == 2)
             {
