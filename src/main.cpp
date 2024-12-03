@@ -99,7 +99,7 @@ int main() {
                 case 1:
                     {
                         std::string foodName;
-                        std::cout << "Search by food name, enter the name: ";
+                        std::cout << "Search by food name, enter the name:   ";
                         std::cin >> foodName;
                         foodGraph.search_by_name(foodName);
                         continue;
@@ -107,7 +107,7 @@ int main() {
                 case 2:
                     {
                         std::string keyword;
-                        std::cout << "Search by food description keyword (ex. cracker), enter the keyword: ";
+                        std::cout << "Search by food description keyword (ex. cracker), enter the keyword:   ";
                         std::cin >> keyword;
                         foodGraph.search_by_description_bfs(keyword);
                         continue;
@@ -115,7 +115,7 @@ int main() {
                 case 3:
                     {
                         float fiberAmount;
-                        std::cout << "Enter the amount of fiber to search for: ";
+                        std::cout << "Enter the amount of fiber to search for:   ";
                         std::cin >> fiberAmount;
                         foodGraph.search_by_fiber(fiberAmount);
                         continue;
@@ -123,7 +123,7 @@ int main() {
                 case 4:
                     {
                         float proteinAmount;
-                        std::cout << "Enter the amount of protein to search for: ";
+                        std::cout << "Enter the amount of protein to search for:   ";
                         std::cin >> proteinAmount;
                         foodGraph.search_by_protein(proteinAmount);
                         continue;
@@ -131,7 +131,7 @@ int main() {
                 case 5:
                     {
                         float sodiumAmount;
-                        std::cout << "Enter the amount of sodium to search for: ";
+                        std::cout << "Enter the amount of sodium to search for:    ";
                         std::cin >> sodiumAmount;
                         foodGraph.search_by_sodium(sodiumAmount);
                         continue;
@@ -139,7 +139,7 @@ int main() {
                 case 6:
                     {
                         float sugarsAmount;
-                        std::cout << "Enter the amount of sugars to search for: ";
+                        std::cout << "Enter the amount of sugars to search for:    ";
                         std::cin >> sugarsAmount;
                         foodGraph.search_by_sugars(sugarsAmount);
                         continue;
@@ -147,7 +147,7 @@ int main() {
                 case 7:
                     {
                         float fatsAmount;
-                        std::cout << "Enter the amount of saturated fats to search for: ";
+                        std::cout << "Enter the amount of saturated fats to search for:    ";
                         std::cin >> fatsAmount;
                         foodGraph.search_by_saturated_fat(fatsAmount);
                         continue;
