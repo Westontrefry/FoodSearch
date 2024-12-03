@@ -60,6 +60,12 @@ float convertToFloat(const std::string& token) {
     if (token == "N/A") {
         return 0.0f;
     }
+    // More edge cases for "N/A" occurences
+    if (token.find('N') != std::string::npos ||
+        token.find('/') != std::string::npos ||
+        token.find('A') != std::string::npos) {
+        return 0.0f;
+    }
     // All others converted to float with passed in value
     return stof(token);
 }
@@ -88,21 +94,52 @@ std::vector<Food*> Food::readFile(const std::string& fileName) {
         std::istringstream stream(foodInfo);
         std::string token;
 
-        // Parsing: description (string) & nutritional metrics (as floats)
-        getline(stream, _description, ',');
+        // Read description until comma OUTSIDE of quotes (handles quotes within quotes)
+        std::string description;
+        bool insideQuotes = false;
+        char c;
+
+        // Loop through each char and build token one at a time
+        while (stream.get(c)) {
+            if (c == '"') {
+                // Change inside quotes to false (no comma following)
+                insideQuotes = !insideQuotes;
+            }
+            else if (c == ',' && !insideQuotes) {
+                // Comma follows, ACTUAL delimiter
+                break;
+            }
+            // Built description variable character by character until delimiter is reached
+            description += c;
+        }
+        // Set description variable to private attribute
+        _description = description;
+
+        std::cout << "Description: " << _description << std::endl;
 
         // Convert token to floats for each nutrient amount
         getline(stream, token, ',');
+        std::cout << "Fiber token: " << token << std::endl;
         _fiber = convertToFloat(token);
+
         getline(stream, token, ',');
+        std::cout << "Protein token: " << token << std::endl;
         _protein = convertToFloat(token);
+
         getline(stream, token, ',');
+        std::cout << "Sodium token: " << token << std::endl;
         _sodium = convertToFloat(token);
+
         getline(stream, token, ',');
+        std::cout << "Sugars token: " << token << std::endl;
         _sugars = convertToFloat(token);
+
         getline(stream, token, ',');
+        std::cout << "Saturated fats token: " << token << std::endl;
         _satFats = convertToFloat(token);
+
         getline(stream, token, ',');
+        std::cout << "Energy token: " << token << std::endl;
         _energy = convertToFloat(token);
 
         // Construct food object using the values stored by each token variable
