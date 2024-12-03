@@ -36,7 +36,7 @@ int main() {
         int userInput;                                                    //changed to int - ShanonB
         std::cin >> userInput;                                            // added ShanonB
 
-        if (userInput == "2") {
+        if (userInput == 2) {
             break;
         }
       //  if (userInput == "1") {
