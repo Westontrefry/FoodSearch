@@ -88,21 +88,54 @@ std::vector<Food*> Food::readFile(const std::string& fileName) {
         std::istringstream stream(foodInfo);
         std::string token;
 
-        // Parsing: description (string) & nutritional metrics (as floats)
-        getline(stream, _description, ',');
+        // Check first character in token for quotes
+        if (foodInfo[0] == '"') {
+            // read until end quote
+            std::string description;
+            char c;
+            stream.get(c); // Skips the first quote
+
+            // Loop through each char and build token one at a time
+            while (stream.get(c) && (c != '"' || stream.peek() != ',')) {
+                description += c;
+            }
+
+            // First skips end quote, second get skips comma
+            stream.get(c);
+            stream.get(c);
+
+            // Update private description variable with complete token
+            _description = description;
+        }
+        else {
+            // Parsing: description (string) & nutritional metrics (as floats)
+            getline(stream, _description, ',');
+        }
+        std::cout << "Description: " << _description << std::endl;
 
         // Convert token to floats for each nutrient amount
         getline(stream, token, ',');
+        std::cout << "Fiber token: " << token << std::endl;
         _fiber = convertToFloat(token);
+
         getline(stream, token, ',');
+        std::cout << "Protein token: " << token << std::endl;
         _protein = convertToFloat(token);
+
         getline(stream, token, ',');
+        std::cout << "Sodium token: " << token << std::endl;
         _sodium = convertToFloat(token);
+
         getline(stream, token, ',');
+        std::cout << "Sugars token: " << token << std::endl;
         _sugars = convertToFloat(token);
+
         getline(stream, token, ',');
+        std::cout << "Saturated fats token: " << token << std::endl;
         _satFats = convertToFloat(token);
+
         getline(stream, token, ',');
+        std::cout << "Energy token: " << token << std::endl;
         _energy = convertToFloat(token);
 
         // Construct food object using the values stored by each token variable
