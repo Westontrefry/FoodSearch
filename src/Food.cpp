@@ -60,6 +60,12 @@ float convertToFloat(const std::string& token) {
     if (token == "N/A") {
         return 0.0f;
     }
+    // More edge cases for "N/A" occurences
+    if (token.find('N') != std::string::npos ||
+        token.find('/') != std::string::npos ||
+        token.find('A') != std::string::npos) {
+        return 0.0f;
+    }
     // All others converted to float with passed in value
     return stof(token);
 }
@@ -88,29 +94,27 @@ std::vector<Food*> Food::readFile(const std::string& fileName) {
         std::istringstream stream(foodInfo);
         std::string token;
 
-        // Check first character in token for quotes
-        if (foodInfo[0] == '"') {
-            // read until end quote
-            std::string description;
-            char c;
-            stream.get(c); // Skips the first quote
+        // Read description until comma OUTSIDE of quotes (handles quotes within quotes)
+        std::string description;
+        bool insideQuotes = false;
+        char c;
 
-            // Loop through each char and build token one at a time
-            while (stream.get(c) && (c != '"' || stream.peek() != ',')) {
-                description += c;
+        // Loop through each char and build token one at a time
+        while (stream.get(c)) {
+            if (c == '"') {
+                // Change inside quotes to false (no comma following)
+                insideQuotes = !insideQuotes;
             }
-
-            // First skips end quote, second get skips comma
-            stream.get(c);
-            stream.get(c);
-
-            // Update private description variable with complete token
-            _description = description;
+            else if (c == ',' && !insideQuotes) {
+                // Comma follows, ACTUAL delimiter
+                break;
+            }
+            // Built description variable character by character until delimiter is reached
+            description += c;
         }
-        else {
-            // Parsing: description (string) & nutritional metrics (as floats)
-            getline(stream, _description, ',');
-        }
+        // Set description variable to private attribute
+        _description = description;
+
         std::cout << "Description: " << _description << std::endl;
 
         // Convert token to floats for each nutrient amount

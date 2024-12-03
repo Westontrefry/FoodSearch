@@ -74,11 +74,12 @@ int main() {
                 std::cout << "You have chosen the HashTable." << std::endl;
                 std::string foodName;
                 std::cout << "Search by food description:   ";
-                switch (filterChoice)
-                {
-                    // Vector for storing all matches
-                    std::vector<Food> matches;
+                std::vector<Food> matches;
 
+            switch (filterChoice) {
+                    // Vector for storing all matches
+
+                    case (1): {
                     /*=== Exact Match Search: if there is an exact match, O(1) complexity ===*/
                     auto match = foodHashTable.getFood(foodName);
                     if (match.has_value()) {
@@ -116,7 +117,7 @@ int main() {
                     if (matches.size() == 1) {
                         std::cout << "An exact match has been found!" << endl;
                     }
-
+                }
                 case 2:
                     // add hash function
                         continue;
