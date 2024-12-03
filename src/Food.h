@@ -11,7 +11,12 @@ class Food {
 public:
     /*=== Constructors ===*/
     // Default
-    Food();
+    
+    Food()                                                                    //modified default - ShanonB
+        : _description(""), _fiber(0.0f), _protein(0.0f), _sodium(0.0f),
+          _sugars(0.0f), _satFats(0.0f), _energy(0.0f), _count(0) {}
+
+    //Food();
     // Parameterized constructor
     Food(std::string d, float fiber, float protein, float sodium,
         float sugars, float satFats, float energy);
