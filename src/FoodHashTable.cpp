@@ -72,7 +72,7 @@ vector<const Food*> FoodHashTable::filter(string filterValue) {
 
     vector<const Food*> result;
 
-    for (auto& row : table) {
+    for (const auto& row : table) {
 
         vector<pair<string, Food>> newRow = row;
 
@@ -101,12 +101,101 @@ vector<const Food*> FoodHashTable::filter(string filterValue) {
                 return food1.second.getSatFats() < food2.second.getSatFats();
             });
         }
+        else if (filterValue == "energy") {
+            sort(newRow.begin(), newRow.end(), [](const pair<string, Food>& food1, const pair<string, Food>& food2) {
+                return food1.second.getEnergy() < food2.second.getEnergy();
+            });
+        }
 
         for (const auto& food : newRow) {
             result.push_back(&food.second);
         }
     }
 
+    return result;
+}
+
+vector<const Food*> FoodHashTable::searchByFiber(const float fiberCount) {
+    vector<const Food*> result;
+    for (const auto& row : table) {
+        vector<pair<string, Food>> newRow = row;
+        for (auto& pair : newRow) {
+            if (fiberCount == pair.second.getFiber()) {
+                result.push_back(&pair.second);
+            }
+        }
+
+    }
+    return result;
+}
+
+vector<const Food*> FoodHashTable::searchByProtein(float proteinCount) {
+    vector<const Food*> result;
+    for (const auto& row : table) {
+        vector<pair<string, Food>> newRow = row;
+        for (auto& pair : newRow) {
+            if (proteinCount == pair.second.getProtein()) {
+                result.push_back(&pair.second);
+            }
+        }
+
+    }
+    return result;
+}
+
+vector<const Food*> FoodHashTable::searchBySodium(const float sodiumCount) {
+    vector<const Food*> result;
+    for (const auto& row : table) {
+        vector<pair<string, Food>> newRow = row;
+        for (auto& pair : newRow) {
+            if (sodiumCount == pair.second.getSodium()) {
+                result.push_back(&pair.second);
+            }
+        }
+
+    }
+    return result;
+}
+
+vector<const Food*> FoodHashTable::searchBySugars(const float sugarCount) {
+    vector<const Food*> result;
+    for (const auto& row : table) {
+        vector<pair<string, Food>> newRow = row;
+        for (auto& pair : newRow) {
+            if (sugarCount == pair.second.getSugars()) {
+                result.push_back(&pair.second);
+            }
+        }
+
+    }
+    return result;
+}
+
+vector<const Food*> FoodHashTable::searchBySatFats(const float satFatCount) {
+    vector<const Food*> result;
+    for (const auto& row : table) {
+        vector<pair<string, Food>> newRow = row;
+        for (auto& pair : newRow) {
+            if (satFatCount == pair.second.getSatFats()) {
+                result.push_back(&pair.second);
+            }
+        }
+
+    }
+    return result;
+}
+
+vector<const Food*> FoodHashTable::searchByEnergy(const float energyCount) {
+    vector<const Food*> result;
+    for (const auto& row : table) {
+        vector<pair<string, Food>> newRow = row;
+        for (auto& pair : newRow) {
+            if (energyCount == pair.second.getSatFats()) {
+                result.push_back(&pair.second);
+            }
+        }
+
+    }
     return result;
 }
 

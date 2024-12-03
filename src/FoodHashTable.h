@@ -21,6 +21,12 @@ public:
     void remove(string key);
     optional<Food> getFood(string key);
     vector<const Food*> filter(string filterValue);
+    vector<const Food*> searchByFiber(float fiberCount);
+    vector<const Food*> searchByProtein(float proteinCount);
+    vector<const Food*> searchBySodium(float sodiumCount);
+    vector<const Food*> searchBySugars(float sugarCount);
+    vector<const Food*> searchBySatFats(float satFatCount);
+    vector<const Food*> searchByEnergy(float energyCount);
 };
 
 #endif
